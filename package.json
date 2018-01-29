@@ -2,6 +2,12 @@
   "name": "traderbook-front",
   "version": "0.1.0",
   "private": true,
+  "contributors": [
+    {
+      "name": "Aurélien MARTIN",
+      "email": "contact@aurelienmartin.com"
+    }
+  ],
   "dependencies": {
     "material-ui": "^0.20.0",
     "react": "^16.2.0",
