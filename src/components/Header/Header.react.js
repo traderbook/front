@@ -33,7 +33,7 @@ export default class Header extends Component {
     }
   }
 
-  handleChange(event, checked){
+  handleChange = (event, checked) => {
     this.setState({ auth: checked });
   };
 
@@ -47,11 +47,9 @@ export default class Header extends Component {
 
   render() {
     const { classes } = this.props;
-    const { auth, anchorEl } = this.state;
-    const open = Boolean(anchorEl);
 
     return (
-      <div className={classes.root}>
+      <div style={styles.root}>
 
         <AppBar position="static">
           <Toolbar>
