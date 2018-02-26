@@ -2,21 +2,13 @@
   "name": "traderbook-front",
   "version": "0.1.0",
   "private": true,
-  "contributors": [
-    {
-      "name": "Aurélien MARTIN",
-      "email": "contact@aurelienmartin.com"
-    }
-  ],
-  "dependencies": {
-    "material-ui": "^1.0.0-beta.30",
-    "material-ui-icons": "^1.0.0-beta.17",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "react-scripts": "1.1.0",
-    "redux": "^3.7.2"
+  "description": "",
+  "scripts": {
+    "dev": "cross-env MODE_ENV=dev webpack-dev-server",
+    "prod": "cross-env MODE_ENV=prod webpack -p"
   },
+  "author": "Dorian Latouche",
+  "license": "ISC",
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.25.0",
@@ -33,12 +25,13 @@
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "dev": "cross-env MODE_ENV=dev webpack-dev-server",
-    "prod": "cross-env MODE_ENV=prod webpack -p"
+  "dependencies": {
+    "material-ui": "^1.0.0-beta.30",
+    "material-ui-icons": "^1.0.0-beta.17",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.1.0",
+    "redux": "^3.7.2"
   }
 }

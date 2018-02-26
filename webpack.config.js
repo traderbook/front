@@ -16,18 +16,19 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_compontents)/,
+                exclude: /(node_modules)/,
                 use: [
                     {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['es2015' ,'react', 'stage-0']
+                            presets: ['es2015', 'stage-0', 'react']
                         }
                     }
                 ]
             },
             {
                 test: /\.scss$/,
+                exclude: /(node_modules)/,                
                 use: extractPlugin.extract({
                     use: ['css-loader', 'sass-loader']
                 })

@@ -10,58 +10,44 @@ import AccountCircle from 'material-ui-icons/AccountCircle';
 import Switch from 'material-ui/Switch';
 import Menu, { MenuItem } from 'material-ui/Menu';
 
-const styles = {
-  root: {
-    width: '100%',
-  },
-  flex: {
-    flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-};
-
 export default class Header extends Component {
 
   constructor(props){
     super(props)
     this.state = {
       auth: true,
-      anchorEl: null
+      anchorEl: null,
+      open: false,
     }
   }
 
   handleChange = (event, checked) => {
-    this.setState({ auth: checked });
+    this.setState({ auth: checked })
+  }
+
+  handleMenu = (event) => {
+    this.setState({ open: true, anchorEl: event.currentTarget });
   };
 
-  handleMenu(event){
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose(){
+  handleClose = () =>{
     this.setState({ anchorEl: null });
   };
 
   render() {
-    const { classes } = this.props;
-
     return (
       <div style={styles.root}>
 
         <AppBar position="static">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <IconButton color="inherit" aria-label="Menu">
               <MenuIcon />
             </IconButton>
-            <Typography type="title" color="inherit" className={classes.flex}>
+            <Typography type="title" color="inherit">
               TraderBook
             </Typography>
               <div>
                 <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
+                  aria-owns={this.state.anchorEl ? 'menu-appbar' : null}
                   aria-haspopup="true"
                   onClick={this.handleMenu}
                   color="inherit"
@@ -70,7 +56,7 @@ export default class Header extends Component {
                 </IconButton>
                 <Menu
                   id="menu-appbar"
-                  anchorEl={anchorEl}
+                  anchorEl={this.state.anchorEl}
                   anchorOrigin={{
                     vertical: 'top',
                     horizontal: 'right',
@@ -79,7 +65,7 @@ export default class Header extends Component {
                     vertical: 'top',
                     horizontal: 'right',
                   }}
-                  open={open}
+                  open={this.state.open}
                   onClose={this.handleClose}
                 >
                   <MenuItem onClick={this.handleClose}>Profile</MenuItem>
@@ -92,6 +78,15 @@ export default class Header extends Component {
   }
 }
 
-Header.propTypes = {
-  classes: PropTypes.object.isRequired,
+const styles = {
+  root: {
+    width: '100%',
+  },
+  flex: {
+    flex: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
 };

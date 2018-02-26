@@ -4,18 +4,6 @@ import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    marginTop: 30,
-  },
-  paper: {
-    padding: 16,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-});
-
 export default class Content extends React.Component {
   constructor(props) {
     super(props)
@@ -23,20 +11,16 @@ export default class Content extends React.Component {
 
   render() {
     return (
-      <div style={theme.root}>
+      <div style={{}}>
         <Grid container spacing={24}>
           <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}><h2>Bloc code</h2></Paper>
+            <Paper><h2>Bloc code</h2></Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}><h2>Bloc Params</h2></Paper>
+            <Paper><h2>Bloc Params</h2></Paper>
           </Grid>
         </Grid>
       </div>
     )
   }
 }
-
-Content.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
