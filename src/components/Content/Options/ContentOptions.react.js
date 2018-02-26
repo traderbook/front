@@ -9,9 +9,6 @@ export default class ContentOptions extends React.Component {
 
   render() {
     return (
-      <div style={styles.menu}>
-        
-      </div>
       <div style={styles.container}>
        <p>Todo</p>
       </div>
@@ -24,7 +21,7 @@ export default class ContentOptions extends React.Component {
     container: {
       display: 'flex',
     },
-    subContainer: {
+    menu: {
       display: 'flex',
       flex: '1',
       flexDirection: 'column',
