@@ -23,21 +23,25 @@ const styles = {
   },
 };
 
-class Header extends Component {
-  state = {
-    auth: true,
-    anchorEl: null,
-  };
+export default class Header extends Component {
 
-  handleChange = (event, checked) => {
+  constructor(props){
+    super(props)
+    this.state = {
+      auth: true,
+      anchorEl: null
+    }
+  }
+
+  handleChange(event, checked){
     this.setState({ auth: checked });
   };
 
-  handleMenu = event => {
+  handleMenu(event){
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = () => {
+  handleClose(){
     this.setState({ anchorEl: null });
   };
 
@@ -93,5 +97,3 @@ class Header extends Component {
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-
-export default withStyles(styles)(Header);
