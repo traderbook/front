@@ -36,13 +36,12 @@ export default class Header extends Component {
     render() {
         return (
             <div style={styles.root}>
-
                 <AppBar position="static">
                     <Toolbar>
-                        <IconButton color="inherit" aria-label="Menu">
+                        <IconButton style={styles.menuButton} color="inherit" aria-label="Menu">
                             <MenuIcon />
                         </IconButton>
-                        <Typography type="title" color="inherit">
+                        <Typography style={styles.flex} variant="title" color="inherit">
                             TraderBook
                         </Typography>
                         <div>
@@ -80,7 +79,7 @@ export default class Header extends Component {
 
 const styles = {
     root: {
-        width: '100%',
+        flexGrow: 1,
     },
     flex: {
         flex: 1,
