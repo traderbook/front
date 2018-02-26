@@ -4,6 +4,9 @@ import AceEditor from 'react-ace'
 import './Editor.scss'
 import 'brace/mode/javascript'
 import 'brace/theme/monokai'
+import 'brace/snippets/javascript'
+import 'brace/ext/language_tools'
+
 export default class Editor extends Component {
 	constructor(props, context) {
 		super(props, context)
@@ -15,7 +18,6 @@ export default class Editor extends Component {
 	}
 
 	render() {
-		console.log('Editor.react.js -> 17 : this', this.state.code)
 		return (
 			<div className='containerInputCode'>
 				<AceEditor
