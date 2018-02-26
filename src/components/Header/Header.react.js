@@ -12,81 +12,81 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 
 export default class Header extends Component {
 
-  constructor(props){
-    super(props)
-    this.state = {
-      auth: true,
-      anchorEl: null,
-      open: false,
+    constructor(props) {
+        super(props)
+        this.state = {
+            auth: true,
+            anchorEl: null,
+            open: false,
+        }
     }
-  }
 
-  handleChange = (event, checked) => {
-    this.setState({ auth: checked })
-  }
+    handleChange = (event, checked) => {
+        this.setState({ auth: checked })
+    }
 
-  handleMenu = (event) => {
-    this.setState({ open: true, anchorEl: event.currentTarget });
-  };
+    handleMenu = (event) => {
+        this.setState({ open: true, anchorEl: event.currentTarget });
+    };
 
-  handleClose = () =>{
-    this.setState({ anchorEl: null });
-  };
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
 
-  render() {
-    return (
-      <div style={styles.root}>
+    render() {
+        return (
+            <div style={styles.root}>
 
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton color="inherit" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography type="title" color="inherit">
-              TraderBook
-            </Typography>
-              <div>
-                <IconButton
-                  aria-owns={this.state.anchorEl ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={this.state.anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={this.state.open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                </Menu>
-              </div>
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
-  }
+                <AppBar position="static">
+                    <Toolbar>
+                        <IconButton color="inherit" aria-label="Menu">
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography type="title" color="inherit">
+                            TraderBook
+                        </Typography>
+                        <div>
+                            <IconButton
+                                aria-owns={this.state.anchorEl ? 'menu-appbar' : null}
+                                aria-haspopup="true"
+                                onClick={this.handleMenu}
+                                color="inherit"
+                            >
+                                <AccountCircle />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={this.state.anchorEl}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={this.state.open}
+                                onClose={this.handleClose}
+                            >
+                                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                            </Menu>
+                        </div>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        )
+    }
 }
 
 const styles = {
-  root: {
-    width: '100%',
-  },
-  flex: {
-    flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
+    root: {
+        width: '100%',
+    },
+    flex: {
+        flex: 1,
+    },
+    menuButton: {
+        marginLeft: -12,
+        marginRight: 20,
+    },
 };
