@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Options from './Options/ContentOptions.react.js'
+import Editor from './Editor/Editor.react'
 
 export default class Content extends React.Component {
   constructor(props) {
@@ -14,7 +15,10 @@ export default class Content extends React.Component {
     return (
       <div style={styles.container}>
         <div style={styles.subContainer}>
-          <Paper><h2>Bloc code</h2></Paper>
+          <Paper>
+            <h2>Bloc code</h2>
+            <Editor />
+          </Paper>
         </div>
         <div style={styles.subContainer}>
           <Paper>
