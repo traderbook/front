@@ -11,16 +11,27 @@ export default class Content extends React.Component {
 
   render() {
     return (
-      <div style={{}}>
-        <Grid container spacing={24}>
-          <Grid item xs={12} sm={6}>
-            <Paper><h2>Bloc code</h2></Paper>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Paper><h2>Bloc Params</h2></Paper>
-          </Grid>
-        </Grid>
+      <div style={styles.container}>
+        <div style={styles.subContainer}>
+          <Paper><h2>Bloc code</h2></Paper>
+        </div>
+        <div style={styles.subContainer}>
+          <Paper><h2>Bloc Params</h2></Paper>
+        </div>
       </div>
+
     )
   }
 }
+
+  const styles = {
+    container: {
+      display: 'flex',
+    },
+    subContainer: {
+      display: 'flex',
+      flex: '1',
+      flexDirection: 'column',
+      padding: '10px'
+    }
+  }
