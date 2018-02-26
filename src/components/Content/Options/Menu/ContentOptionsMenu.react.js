@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  BrowserRouter as Router,
+  Link
+} from 'react-router-dom';
 
 
 export default class ContentOptionsMenu extends React.Component {
@@ -9,15 +13,16 @@ export default class ContentOptionsMenu extends React.Component {
 
   render() {
     return (
-      <div style={styles.menu}>
-        <ul id="navigation">
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Backtests</a></li>
-            <li><a href="#">Output</a></li>
-            <li><a href="#">Documentation</a></li>
-        </ul>
-      </div>
-
+        <Router>
+            <div style={styles.menu}>
+                <ul id="navigation">
+                    <li><Link to="/analytics">Analytics</Link></li>
+                    <li><Link to="/backtests">Backtests</Link></li>
+                    <li><Link to="/output">Output</Link></li>
+                    <li><Link to="/documentation">Documentation</Link></li>
+                </ul>
+            </div>
+        </Router>
     )
   }
 }
