@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ContentOptionsMenu from './Menu/ContentOptionsMenu.react';
+import './options.scss';
 
 
 export default class ContentOptions extends React.Component {
@@ -10,7 +12,8 @@ export default class ContentOptions extends React.Component {
   render() {
     return (
       <div style={styles.container}>
-       <p>Todo</p>
+        <ContentOptionsMenu />
+        <p>Hello World !</p>
       </div>
 
     )

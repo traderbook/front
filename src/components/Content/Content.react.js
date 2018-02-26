@@ -22,7 +22,6 @@ export default class Content extends React.Component {
         </div>
         <div style={styles.subContainer}>
           <Paper>
-            <h2>Options</h2>
               <Options />
           </Paper>
         </div>
