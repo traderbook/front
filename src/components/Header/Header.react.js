@@ -30,7 +30,7 @@ export default class Header extends Component {
     };
 
     handleClose = () => {
-        this.setState({ anchorEl: null });
+        this.setState({ open: false, anchorEl: null });
     };
 
     render() {
