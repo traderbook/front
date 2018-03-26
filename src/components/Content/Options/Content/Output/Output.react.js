@@ -13,10 +13,6 @@ const data = [
   createData('01-01-1970 00:00:00', 'Lorem ipsum dolor sit amet'),
   createData('01-01-1970 00:00:00', 'Lorem ipsum dolor sit amet'),
   createData('01-01-1970 00:00:00', 'Lorem ipsum dolor sit amet'),
-  createData('01-01-1970 00:00:00', 'Lorem ipsum dolor sit amet'),
-  createData('01-01-1970 00:00:00', 'Lorem ipsum dolor sit amet'),
-  createData('01-01-1970 00:00:00', 'Lorem ipsum dolor sit amet'),
-  createData('01-01-1970 00:00:00', 'Lorem ipsum dolor sit amet'),
   ];
 
 export default class OptionsContentOutput extends React.Component {
@@ -27,6 +23,7 @@ export default class OptionsContentOutput extends React.Component {
 
 
   render() {
+
     return (
       <div>
         {data.map(n => {
