@@ -75,7 +75,7 @@ export default class Header extends Component {
                             >   
                                 <AccountCircle />
                                 
-                            </IconButton></div>:<Button  onClick={this.sendRequestConnection} color="inherit">Connection</Button>
+                            </IconButton></div>:<Button  onClick={this.sendRequestConnection} color="inherit">Connexion</Button>
                             }
                             <Menu
                                 id="menu-appbar"

@@ -55,7 +55,7 @@ export default class Connection extends Component {
 						Connexion
             		</Button>
 					<Button onClick={this.props.close} color="primary" autoFocus>
-						Déconnexion
+						Annuler
             		</Button>
 				</DialogActions>
 			</Dialog>

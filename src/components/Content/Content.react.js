@@ -16,7 +16,6 @@ export default class Content extends React.Component {
       <div style={styles.container}>
         <div style={styles.subContainer}>
           <Paper>
-            <h2>Bloc code</h2>
             <Editor />
           </Paper>
         </div>
