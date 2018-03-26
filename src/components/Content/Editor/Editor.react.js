@@ -126,7 +126,7 @@ export default class Editor extends Component {
 								className="menuAlgo"
 							>
 								{this.state.tabConfig.map((config, i)=>{
-									return (<MenuItem key={i} onClick={() => { this.setState({openMenuConfig: false, nameConfig: i-1}) }}>{config}</MenuItem>)
+									return (<MenuItem key={i} onClick={() => { this.setState({openMenuConfig: false, nameConfig: i}) }}>{config}</MenuItem>)
 								})}
 								<MenuItem onClick={this.onClickAddConfiguration}>Ajouter une configuration</MenuItem>
 								
