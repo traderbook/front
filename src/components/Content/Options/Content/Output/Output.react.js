@@ -26,9 +26,9 @@ export default class OptionsContentOutput extends React.Component {
 
     return (
       <div>
-        {data.map(n => {
+        {data.map((n,i) => {
               return (
-                  <p>[{n.date}] - {n.message} </p>
+                  <p key={i}>[{n.date}] - {n.message} </p>
               );
             })}
       </div>
