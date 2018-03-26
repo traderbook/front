@@ -11,14 +11,15 @@ import IconButton from 'material-ui/IconButton'
 import Icon from 'material-ui/Icon'
 import Input from 'material-ui/Input'
 import Menu, { MenuItem } from 'material-ui/Menu'
+import DialogAddConfig from './DialogAddConfig.react'
 
 export default class Editor extends Component {
 	constructor(props, context) {
 		super(props, context)
 		this.state = {
-			code:
-				`class Main extends Strategy {\n\tOnInit(){\n\n\t}\n\n\ttOnTick(tick){\n\n\t}\n\n\tOnDestruct(){\n\n\t}\n}`, 
-				anchorEl: null, openAlgo: false, openMenuConfig: false, anchorElConfig: null, nameConfig: 'Config n°1'
+			code:0, anchorEl: null, openAlgo: false, openMenuConfig: false, anchorElConfig: null, nameConfig: 0, openDialogConfig: false,
+			nameAlgo: 0, tabConfig:['Config n°1', 'Config n°2'], tabAlgo:['Algo n°1', 'Algo n°2'], tabCode: ['class Main extends Strategy {\n\tOnInit(){\n\n\t}\n\n\ttOnTick(tick){\n\n\t}\n\n\tOnDestruct(){\n\n\t}\n}', 'let animal = new Lapin() \nlet castor = new Castor()'],
+			nameAlgoInput: ''
 		}
 	}
 
@@ -31,14 +32,35 @@ export default class Editor extends Component {
 	}
 
 	closeAlog = (num) => {
-		if (num === -1) {
-			this.setState({ openAlgo: false })
+		switch(num){
+			case -2 :
+			this.setState({ openAlgo: false, code:-1, nameAlgo: -1 })
+				
+			break
+			case -1 :
+				this.setState({ openAlgo: false })
+			break
+			case 0: 
+				this.setState({ openAlgo: false, code: 0, nameAlgo: 0 })
+			
+			break
+			case 1: 
+			this.setState({ openAlgo: false, code:1, nameAlgo: 1 })
+				break
 		}
-		let algos = [`class Main extends Strategy {\n\tOnInit(){\n\n\t}\n\n\ttOnTick(tick){\n\n\t}\n\n\tOnDestruct(){\n\n\t}\n}`, 'let animal = new Lapin() \nlet castor = new Castor()']
-		this.setState({ openAlgo: false, code: algos[num] })
+	}
+
+	onClickAddConfiguration = () => {
+		this.setState({openMenuConfig: false, nameConfig: 'Config n°1', openDialogConfig: true})
 	}
 
 	openMenu = (e) => { this.setState({ anchorEl: e.currentTarget, openAlgo: true }) }
+
+	addConfig = (config) => {
+		let tabConfig = this.state.tabConfig
+		tabConfig.push(config.nom)
+		this.setState({tabConfig: tabConfig, nameConfig: (tabConfig.length -1)})
+	}
 
 	render() {
 		return (
@@ -53,6 +75,8 @@ export default class Editor extends Component {
 							inputProps={{
 								'aria-label': 'Description',
 							}}
+							value={this.state.nameAlgo>-1?this.state.tabAlgo[this.state.nameAlgo]:''}
+							onChange={(e)=>{this.setState({nameAlgoInput: e.target.value})}}
 						/>
 							<IconButton onClick={this.openMenu} aria-owns={this.state.anchorEl ? 'menu-editor' : null} color="inherit" aria-label="Menu">
 								<Icon>arrow_drop_down</Icon>
@@ -76,10 +100,11 @@ export default class Editor extends Component {
 							>
 								<MenuItem onClick={() => { this.closeAlog(0) }}>Algo n°1</MenuItem>
 								<MenuItem onClick={() => { this.closeAlog(1) }}>Algo n°2</MenuItem>
+								<MenuItem onClick={() => { this.closeAlog(-2) }}>Ajouter un algorithme</MenuItem>
 							</Menu>
 						</div>
 						<div className="containerMenuRight">
-						<p>{this.state.nameConfig}</p>
+						<p>{this.state.nameConfig>-1?this.state.tabConfig[this.state.nameConfig]:this.state.nameConfig}</p>
 						<IconButton onClick={(e) => { this.setState({openMenuConfig: true, anchorElConfig: e.currentTarget}) }} aria-owns={this.state.anchorElConfig ? 'menu-editorConfig' : null} color="inherit" aria-label="Menu">
 								<Icon>arrow_drop_down</Icon>
 							</IconButton>
@@ -100,8 +125,11 @@ export default class Editor extends Component {
 								onClose={() => { this.setState({openMenuConfig: false}) }}
 								className="menuAlgo"
 							>
-								<MenuItem onClick={() => { this.setState({openMenuConfig: false, nameConfig: 'Config n°1'}) }}>Config n°1</MenuItem>
-								<MenuItem onClick={() => { this.setState({openMenuConfig: false, nameConfig: 'Config n°2'}) }}>Config n°2</MenuItem>
+								{this.state.tabConfig.map((config, i)=>{
+									return (<MenuItem key={i} onClick={() => { this.setState({openMenuConfig: false, nameConfig: i-1}) }}>{config}</MenuItem>)
+								})}
+								<MenuItem onClick={this.onClickAddConfiguration}>Ajouter une configuration</MenuItem>
+								
 							</Menu>
 						<div className="iconColorPlay">
 						<IconButton
@@ -127,7 +155,7 @@ export default class Editor extends Component {
 					showGutter={true}
 					highlightActiveLine={true}
 					onChange={this.onChange}
-					value={this.state.code}
+					value={this.state.code > -1?this.state.tabCode[this.state.code]:''}
 					setOptions={{
 						enableBasicAutocompletion: true,
 						enableLiveAutocompletion: true,
@@ -136,6 +164,7 @@ export default class Editor extends Component {
 						tabSize: 4,
 					}}
 				/>
+				<DialogAddConfig open={this.state.openDialogConfig} add={this.addConfig} close={()=>{this.setState({openDialogConfig: false})}} />
 			</div>
 		)
 	}
