@@ -13,7 +13,6 @@ export default class ContentOptions extends React.Component {
     return (
       <div style={styles.container}>
         <ContentOptionsMenu />
-        <p>Hello World !</p>
       </div>
 
     )

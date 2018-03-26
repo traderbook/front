@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import ContentBackTests from '../ContentBacktests.react';
+import OptionsContentAnalytics from '../Content/Analytics/Analytics.react'
+
 
 
 export default class ContentOptionsMenu extends React.Component {
@@ -19,7 +20,7 @@ export default class ContentOptionsMenu extends React.Component {
                     <li><Link to="/output">Output</Link></li>
                     <li><Link to="/documentation">Documentation</Link></li>
                 </ul>
-                <Route path="/:id" component={ContentBackTests} />
+                <Route path="/analytics" component={OptionsContentAnalytics} />
             </div>
         </Router>
     )
