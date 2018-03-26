@@ -30,14 +30,14 @@ export default class Content extends React.Component {
   }
 }
 
-  const styles = {
-    container: {
-      display: 'flex',
-    },
-    subContainer: {
-      display: 'flex',
-      flex: '1',
-      flexDirection: 'column',
-      padding: '10px'
-    }
+const styles = {
+  container: {
+    display: 'flex',
+  },
+  subContainer: {
+    display: 'flex',
+    flex: '1',
+    flexDirection: 'column',
+    padding: '10px'
   }
+}
