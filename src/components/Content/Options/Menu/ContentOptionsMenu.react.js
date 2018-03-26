@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import OptionsContentAnalytics from '../Content/Analytics/Analytics.react';
 import OptionsContentOutput from '../Content/Output/Output.react';
-import OptionsContentOutput from '../Content/Documentation/Documentation.react'
 import OptionsContentDocumentation from '../Content/Documentation/Documentation.react';
 
 
