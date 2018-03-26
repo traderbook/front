@@ -1,0 +1,24 @@
+.inputNameAlgo{
+	font-style: italic;
+	font-size: 12px !important;
+	width: 160px;
+}
+
+.menuAlgo{
+	z-index: 1;
+}
+
+.iconColorPlay{
+	color: #8BC34A;
+}
+
+.containerMenuAlgo{
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.containerMenuRight{
+	display: flex;
+	flex-direction: row;
+}
