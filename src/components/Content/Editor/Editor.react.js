@@ -19,12 +19,12 @@ export default class Editor extends Component {
 		this.state = {
 			code:0, anchorEl: null, openAlgo: false, openMenuConfig: false, anchorElConfig: null, nameConfig: 0, openDialogConfig: false,
 			nameAlgo: 0, tabConfig:['Config n°1', 'Config n°2'], tabAlgo:['Algo n°1', 'Algo n°2'], tabCode: ['class Main extends Strategy {\n\tOnInit(){\n\n\t}\n\n\ttOnTick(tick){\n\n\t}\n\n\tOnDestruct(){\n\n\t}\n}', 'let animal = new Lapin() \nlet castor = new Castor()'],
-			nameAlgoInput: ''
+			nameAlgoInput: '', codeValue:'class Main extends Strategy {\n\tOnInit(){\n\n\t}\n\n\ttOnTick(tick){\n\n\t}\n\n\tOnDestruct(){\n\n\t}\n}'
 		}
 	}
 
 	onChange = (code, e) => {
-		this.setState({ code: code })
+		this.setState({ codeValue: code })
 	}
 
 	play = () => {
@@ -34,18 +34,18 @@ export default class Editor extends Component {
 	closeAlog = (num) => {
 		switch(num){
 			case -2 :
-			this.setState({ openAlgo: false, code:-1, nameAlgo: -1 })
+			this.setState({ openAlgo: false, code:-1, codeValue:'', nameAlgo: -1 })
 				
 			break
 			case -1 :
 				this.setState({ openAlgo: false })
 			break
 			case 0: 
-				this.setState({ openAlgo: false, code: 0, nameAlgo: 0 })
+				this.setState({ openAlgo: false, code: 0, codeValue:this.state.tabCode[0], nameAlgo: 0 })
 			
 			break
 			case 1: 
-			this.setState({ openAlgo: false, code:1, nameAlgo: 1 })
+			this.setState({ openAlgo: false, code:1, codeValue:this.state.tabCode[1], nameAlgo: 1 })
 				break
 		}
 	}
@@ -62,9 +62,13 @@ export default class Editor extends Component {
 		this.setState({tabConfig: tabConfig, nameConfig: (tabConfig.length -1)})
 	}
 
+	onKeyDown = (e) => {
+		console.log('Editor.react.js -> 66 : e', e )
+	}
+
 	render() {
 		return (
-			<div>
+			<div onKeyDown={this.onKeyDown}>
 				<div>
 					<Toolbar style={{display: 'flex'}} >
 					<div className="containerMenuAlgo">
@@ -75,7 +79,7 @@ export default class Editor extends Component {
 							inputProps={{
 								'aria-label': 'Description',
 							}}
-							value={this.state.nameAlgo>-1?this.state.tabAlgo[this.state.nameAlgo]:''}
+							value={this.state.nameAlgo>-1?this.state.tabAlgo[this.state.nameAlgo]:this.state.nameAlgoInput}
 							onChange={(e)=>{this.setState({nameAlgoInput: e.target.value})}}
 						/>
 							<IconButton onClick={this.openMenu} aria-owns={this.state.anchorEl ? 'menu-editor' : null} color="inherit" aria-label="Menu">
@@ -155,7 +159,7 @@ export default class Editor extends Component {
 					showGutter={true}
 					highlightActiveLine={true}
 					onChange={this.onChange}
-					value={this.state.code > -1?this.state.tabCode[this.state.code]:''}
+					value={this.state.codeValue}
 					setOptions={{
 						enableBasicAutocompletion: true,
 						enableLiveAutocompletion: true,
