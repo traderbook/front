@@ -9,7 +9,9 @@ import MenuIcon from 'material-ui-icons/Menu';
 import AccountCircle from 'material-ui-icons/AccountCircle';
 import Switch from 'material-ui/Switch';
 import Menu, { MenuItem } from 'material-ui/Menu';
-
+import Connection from '../connection/Connection.react'
+import Button from 'material-ui/Button'
+import './Header.scss'
 export default class Header extends Component {
 
     constructor(props) {
@@ -18,6 +20,9 @@ export default class Header extends Component {
             auth: true,
             anchorEl: null,
             open: false,
+            openConnection: false,
+            connect: false,
+            name: ''
         }
     }
 
@@ -26,16 +31,28 @@ export default class Header extends Component {
     }
 
     handleMenu = (event) => {
-        this.setState({ open: true, anchorEl: event.currentTarget });
-    };
+        if(this.state.connect){
+            this.setState({ open: true, anchorEl: event.currentTarget });
+        }
+    }
 
     handleClose = () => {
         this.setState({ open: false, anchorEl: null });
     };
 
+    sendRequestConnection = () => {
+        this.setState({openConnection: true})
+    }
+
+    connection = (login) => {
+        console.log('Header.react.js -> 44 : coucou', login )
+        this.setState({connect: true, name: login})
+    }
+
     render() {
         return (
             <div style={styles.root}>
+            <Connection open={this.state.openConnection} connection={this.connection} close={()=>{this.setState({openConnection: false})}}/>
                 <AppBar position="static">
                     <Toolbar>
                         <IconButton style={styles.menuButton} color="inherit" aria-label="Menu">
@@ -45,14 +62,21 @@ export default class Header extends Component {
                             TraderBook
                         </Typography>
                         <div>
+                            {this.state.connect?
+                            <div className="login">
+                                <p>
+                                {this.state.name}
+                                </p>
                             <IconButton
                                 aria-owns={this.state.anchorEl ? 'menu-appbar' : null}
                                 aria-haspopup="true"
                                 onClick={this.handleMenu}
                                 color="inherit"
-                            >
+                            >   
                                 <AccountCircle />
-                            </IconButton>
+                                
+                            </IconButton></div>:<Button  onClick={this.sendRequestConnection} color="inherit">Connection</Button>
+                            }
                             <Menu
                                 id="menu-appbar"
                                 anchorEl={this.state.anchorEl}
@@ -67,7 +91,7 @@ export default class Header extends Component {
                                 open={this.state.open}
                                 onClose={this.handleClose}
                             >
-                                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={this.handleClose}>Profile - {this.state.name}</MenuItem>
                             </Menu>
                         </div>
                     </Toolbar>
