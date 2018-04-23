@@ -11,7 +11,7 @@ export default class ContentOptions extends React.Component {
 
   render() {
     return (
-      <div style={styles.container}>
+      <div className="container" style={styles.container}>
         <ContentOptionsMenu />
       </div>
 
@@ -25,8 +25,6 @@ export default class ContentOptions extends React.Component {
     },
     menu: {
       display: 'flex',
-      flex: '1',
       flexDirection: 'column',
-      padding: '10px'
     }
   }

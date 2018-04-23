@@ -127,7 +127,7 @@ export default class Editor extends Component {
 
 	render() {
 		return (
-			<div onKeyDown={this.onKeyDown}>
+			<div className="container" onKeyDown={this.onKeyDown}>
 				<Snackbar
 					anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
 					open={this.state.openSnack}
@@ -284,6 +284,7 @@ export default class Editor extends Component {
 				<AceEditor
 					className="editor"
 					width="100%"
+					height='90%'
 					mode="javascript"
 					theme="monokai"
 					name="codeEditorId"

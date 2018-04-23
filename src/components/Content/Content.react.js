@@ -15,12 +15,12 @@ export default class Content extends React.Component {
     return (
       <div style={styles.container}>
         <div style={styles.subContainer}>
-          <Paper>
+          <Paper style={{height: '100%'}}>
             <Editor />
           </Paper>
         </div>
         <div style={styles.subContainer}>
-          <Paper>
+          <Paper style={{height: '100%'}}>
               <Options />
           </Paper>
         </div>
@@ -32,12 +32,15 @@ export default class Content extends React.Component {
 
 const styles = {
   container: {
-    display: 'flex',
+   display: 'grid',
+   gridTemplateColumns: '1fr 1fr',
+   gridTemplateRows: '1fr',
+   height: '80vh',
   },
   subContainer: {
+    padding: '10px',    
+    height: '100%',
     display: 'flex',
-    flex: '1',
     flexDirection: 'column',
-    padding: '10px'
   }
 }
