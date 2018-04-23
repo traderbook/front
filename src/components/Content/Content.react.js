@@ -35,7 +35,7 @@ const styles = {
    display: 'grid',
    gridTemplateColumns: '1fr 1fr',
    gridTemplateRows: '1fr',
-   height: '80vh',
+   height: '85vh',
   },
   subContainer: {
     padding: '10px',    

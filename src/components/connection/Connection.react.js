@@ -15,6 +15,7 @@ export default class Connection extends Component {
 		this.state = { login: '', password: '', error: false }
 	}
 
+	// quand on clique sur connection
 	connection = () => { 
 		if(this.state.login.length > 0 ){
 			this.props.connection(this.state.login)

@@ -17,12 +17,14 @@ export default class DialogAddConfig extends Component {
 		this.state = { nom: '', deposit: 1000, debut: this.dateFormat(new Date()), fin: this.dateFormat(new Date(Date.now() + 1000 * 60 * 60 * 24 * 7)), unitTime: 1, error: false }
 	}
 
+	// formattage des dates (ex: 2004-04-23)
 	dateFormat = (date) => {
 		console.log('DialogAddConfig.react.js -> 18 : data', date, typeof date)
 		console.log('DialogAddConfig.react.js -> 18 : data', '' + this.twoDigits(date.getDate()) + '/' + this.twoDigits(date.getMonth() + 1) + '/' + this.twoDigits(date.getFullYear()))
 		return '' + date.getFullYear() + '-' + this.twoDigits(date.getMonth() + 1) + '-' + this.twoDigits(date.getDate())
 	}
 
+	// Permet de placer un 0 quand il s'agit d'un chiffre (ex: 11 -> 11, 3 -> 03)
 	twoDigits = (number) => {
 		if (number >= 10) { return '' + number }
 		else {
@@ -30,6 +32,7 @@ export default class DialogAddConfig extends Component {
 		}
 	}
 
+	// Quand on clique sur ajouter
 	ajouter = () => {
 		if(this.state.nom.length > 0 ){
 		let res = {nom: this.state.nom, deposit: this.state.deposit, debut: this.state.debut, fin: this.state.fin, unitTime: this.state.unitTime}

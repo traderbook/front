@@ -25,7 +25,7 @@ export default class OptionsContentDocumentation extends React.Component {
         </div>
         <div id="right">
           <h2>Description de la fonction</h2>
-            <div class="tab">
+            <div className="tab">
                 <div id="OnInit">Fonction OnInit: .....</div>
                 <div id="OnTick">Fonction OnTick: .....</div>
                 <div id="OnDestruct">Fonction OnDestruct: .....</div>

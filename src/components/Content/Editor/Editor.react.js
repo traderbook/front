@@ -39,18 +39,22 @@ export default class Editor extends Component {
 		}
 	}
 
+	// Quand l'éditeur change de valeur. code -> string correspondant au code, e -> Object evenement
 	onChange = (code, e) => {
 		this.setState({ codeValue: code })
 	}
 
+	// Pour fermer la snackBar
 	closeSnack = () => {
 		this.setState({ openSnack: false })
 	}
 
+	// Quand on clique sur "play", pour lancer un algorithme
 	play = () => {
 		console.log("Editor.react.js -> 25 : Play")
 	}
 
+	// Quand on change d'algorithme, dans le menu. num -> number qui correspond à l'indice du code
 	closeAlog = num => {
 		switch (num) {
 			case -2:
@@ -78,6 +82,7 @@ export default class Editor extends Component {
 		}
 	}
 
+	// Quand on clique pour ajouter une configuration
 	onClickAddConfiguration = () => {
 		this.setState({
 			openMenuConfig: false,
@@ -86,10 +91,7 @@ export default class Editor extends Component {
 		})
 	}
 
-	openMenu = e => {
-		this.setState({ anchorEl: e.currentTarget, openAlgo: true })
-	}
-
+	// Lors de la validation d'ajout de configuration
 	addConfig = config => {
 		let tabConfig = this.state.tabConfig
 		tabConfig.push(config.nom)
@@ -99,6 +101,7 @@ export default class Editor extends Component {
 		})
 	}
 
+	// Capture evenement keyDown, capture CTRL + S pour sauvegarder
 	onKeyDown = e => {
 		console.log("Editor.react.js -> 66 : e.wi", e.which)
 		if (e.which == 83 && e.ctrlKey) {
@@ -120,7 +123,7 @@ export default class Editor extends Component {
 				tabCode[this.state.code] = this.state.codeValue
 				this.setState({ tabCode: tabCode })
 			}
-			this.setState({openSnack: true})
+			this.setState({ openSnack: true })
 			console.log("Editor.react.js -> 67 : pressed")
 		}
 	}
@@ -156,7 +159,12 @@ export default class Editor extends Component {
 									}}
 								/>
 								<IconButton
-									onClick={this.openMenu}
+									onClick={e => {
+										this.setState({
+											anchorEl: e.currentTarget,
+											openAlgo: true
+										})
+									}}
 									aria-owns={
 										this.state.anchorEl
 											? "menu-editor"
@@ -284,7 +292,7 @@ export default class Editor extends Component {
 				<AceEditor
 					className="editor"
 					width="100%"
-					height='90%'
+					height="90%"
 					mode="javascript"
 					theme="monokai"
 					name="codeEditorId"
