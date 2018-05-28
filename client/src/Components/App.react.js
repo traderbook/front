@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom"
 
 export default class App extends Component {
 	componentWillMount() {
-		console.log("Main.react.js -> 27 : coucou")
+		console.log("Main.react.js -> 27 : lapin")
 		var xhr = new XMLHttpRequest()
 
 		xhr.onreadystatechange = function() {

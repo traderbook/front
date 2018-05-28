@@ -5,6 +5,7 @@
   "description": "",
   "scripts": {
     "dev": "cross-env MODE_ENV=dev webpack-dev-server",
+    "watch": "webpack --progress --colors --watch",
     "prod": "cross-env MODE_ENV=prod webpack -p"
   },
   "author": "Dorian Latouche",
