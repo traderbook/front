@@ -14,7 +14,7 @@ import Input, { InputLabel } from 'material-ui/Input'
 export default class DialogAddConfig extends Component {
 	constructor(props, context) {
 		super(props, context)
-		this.state = { nom: '', deposit: 1000, debut: this.dateFormat(new Date()), fin: this.dateFormat(new Date(Date.now() + 1000 * 60 * 60 * 24 * 7)), unitTime: 1, error: false }
+		this.state = { nom: '', deposit: 1000, debut: this.dateFormat(new Date()), fin: this.dateFormat(new Date(Date.now() + 1000 * 60 * 60* 24 * 7)), unitTime: 1, error: false }
 	}
 
 	// formattage des dates (ex: 2004-04-23)
