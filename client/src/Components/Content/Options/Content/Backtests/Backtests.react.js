@@ -44,8 +44,7 @@ export default class OptionsContentBacktests extends React.Component {
               if ( (i) % 2 === 0) {
                 styleTab = 'striped';
               }
-              console.log(styleTab);
-              return (
+                return (
                 <TableRow className={styleTab} key={i}>
                   <TableCell>{n.started}</TableCell>
                   <TableCell>{n.ended}</TableCell>
