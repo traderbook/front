@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDom from "react-dom"
-import App from "./components/App.react"
+import App from "./Components/App.react"
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles"
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom"
 
