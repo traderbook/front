@@ -1,9 +1,16 @@
-const express = require('express')
+const express = require("express")
+var bodyParser = require("body-parser")
 const app = express()
 
-app.use(express.static('../client'))
-app.get('/api/', (req, res) => {
-	console.log('server.js -> 5 : coucou')
-	res.send('lapin')
-})
-app.listen(3000, () => console.log('Lancement serveur port: 3000'))
+//pour récupérer le body des requetes
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
+app.use(express.static("../client"))
+
+//les routes
+require('./routes/routes')(app)
+
+
+
+app.listen(3000, () => console.log("Lancement serveur port: 3000"))
