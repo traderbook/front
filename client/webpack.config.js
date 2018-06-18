@@ -12,21 +12,27 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/dist'
     },
+    devServer: {
+        historyApiFallback: true,
+        contentBase: './'
+      },
     module: {
         rules: [
             {
                 test: /\.js$/,
+                exclude: /(node_modules)/,
                 use: [
                     {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['es2015' ,'react']
+                            presets: ['es2015', 'stage-0', 'react']
                         }
                     }
                 ]
             },
             {
                 test: /\.scss$/,
+                exclude: /(node_modules)/,                
                 use: extractPlugin.extract({
                     use: ['css-loader', 'sass-loader']
                 })
